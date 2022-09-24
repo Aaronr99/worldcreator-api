@@ -14,7 +14,7 @@ const corsOptions ={
 app.use(cors(corsOptions));
 
 //process.env.DATABASE_URL (local)
-mongoose.connect(process.env.HEROKU_APP_NAME)
+mongoose.connect(process.env.APP_NAME)
 const db = mongoose.connection
 
 db.on('error', (error) => console.error(error))
