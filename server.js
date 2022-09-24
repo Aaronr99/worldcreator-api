@@ -18,5 +18,5 @@ const worldRouter = require('./routes/worldRoutes')
 app.use('/world', worldFilter)
 app.use('/worldDB', worldRouter)
 
-app.listen(50000 || process.env.PORT, () => console.log('Server Started'));
+app.listen(process.env.PORT, () => console.log('Server Started'));
 
