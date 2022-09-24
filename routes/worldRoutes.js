@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const WorldElement = require('../models/worldElement')
-require('dotenv').config()
+//require('dotenv').config()
 
 const multer = require('multer')
 const fs = require('fs')
