@@ -22,7 +22,8 @@ const worldElementSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true,
-        default: `${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/public/${'questionMark.jpg'}`
+        // default: `${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/public/${'questionMark.jpg'}`
+        default: `${process.env.HEROKU_APP_NAME}:${process.env.PORT}/public/${'questionMark.jpg'}`
     },
     dateAdded: {
         type: Date,
@@ -33,7 +34,7 @@ const worldElementSchema = new mongoose.Schema({
 
 worldElementSchema.methods.setImgUrl = function setImgUrl(filename) {
     const p = process.env
-    this.imageUrl = `${p.DATABASE_HOST}:${p.DATABASE_PORT}/public/${filename}`
+    this.imageUrl = `${p.HEROKU_APP_NAME}:${p.PORT}/public/${filename}`
 }
 
 module.exports = mongoose.model('worldDB', worldElementSchema)

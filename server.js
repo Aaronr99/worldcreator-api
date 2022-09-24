@@ -13,7 +13,8 @@ const corsOptions ={
 }
 app.use(cors(corsOptions));
 
-mongoose.connect(process.env.DATABASE_URL)
+//process.env.DATABASE_URL (local)
+mongoose.connect(process.env.HEROKU_APP_NAME)
 const db = mongoose.connection
 
 db.on('error', (error) => console.error(error))
@@ -29,8 +30,8 @@ const worldRouter = require('./routes/worldRoutes')
 app.use('/world', worldFilter)
 app.use('/worldDB', worldRouter)
 
-// Https part
-var fs = require('fs');
+// Https part only local
+/*var fs = require('fs');
 var https = require('https');
 var privateKey  = fs.readFileSync(`${process.env.ROUTE_KEY}.pem`, 'utf8');
 var certificate = fs.readFileSync(`${process.env.ROUTE_CERT}.pem`, 'utf8');
@@ -40,8 +41,8 @@ const server = https.createServer({
     cert: certificate
   }, app);
   
-server.listen(50000, () => console.log('Https Started'));
+server.listen(50000 || process.env.PORT, () => console.log('Https Started'));*/
 //end https
 
-//app.listen(50000, () => console.log('Server Started'));
+app.listen(50000 || process.env.PORT, () => console.log('Server Started'));
 

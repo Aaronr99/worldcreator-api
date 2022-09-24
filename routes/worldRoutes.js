@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const WorldElement = require('../models/worldElement')
+require('dotenv').config()
 
 const multer = require('multer')
 const fs = require('fs')
@@ -80,7 +81,7 @@ router.patch('/:id', upload.single("image"), getElement, async (req, res) => {
     }
     if (req.file) {
         const imgUrl = res.element.imageUrl
-            .replace('localhost:50000/public', path.join(__dirname, '../images'))
+            .replace('{process.env.HEROKU_APP_NAME}', path.join(__dirname, '../images'))
         const imageName = imgUrl.split("/")
         if (imageName[imageName.length - 1] != 'questionMark.jpg') {
             fs.unlink(imgUrl, (err) => {
@@ -110,7 +111,7 @@ router.delete('/:id', getElement, async (req, res) => {
     }
 
     const imgUrl = res.element.imageUrl
-        .replace('localhost:50000/public', path.join(__dirname, '../images'))
+        .replace('{process.env.HEROKU_APP_NAME}', path.join(__dirname, '../images'))
     const imageName = imgUrl.split("/")
     if (imageName[imageName.length - 1] != 'questionMark.jpg') {
         fs.unlink(imgUrl, (err) => {
