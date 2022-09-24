@@ -1,0 +1,29 @@
+GET http://localhost:50000/worldDB
+
+###
+GET http://localhost:50000/worldDB/632569408ba5688951448d8c/childs
+
+###
+GET http://localhost:50000/world/person
+
+###
+POST http://localhost:50000/worldDB
+Content-Type: application/json
+
+{
+    "title": "Fokton",
+    "description": "A dead city.",
+    "category": "location"
+}
+
+###
+DELETE http://localhost:50000/worldDB/6328c24620ed55116c204ab4
+
+
+###
+PATCH http://localhost:50000/worldDB/6328e815aeebf9491bc415eb 
+Content-Type: application/json 
+
+{
+    "parent": "6328c30420ed55116c204ac2"
+}
