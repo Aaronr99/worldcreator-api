@@ -2,6 +2,15 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+const cors = require('cors')
+
+const corsOptions ={
+    origin:'https://aaronr99.github.io/worldcreator-front/', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
 mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection
 
