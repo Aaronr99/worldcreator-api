@@ -118,6 +118,12 @@ router.delete('/:id', getElement, async (req, res) => {
                 console.log(err)
         })
     }
+    const childrens = await WorldElement.find(x => x.parent === res.element.parent);
+    if (childrens.length > 0) {
+        childrens.forEach(child => {
+            child.parent = 'root';
+        });
+    }
 })
 
 async function getElement(req, res, next) {
