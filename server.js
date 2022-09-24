@@ -6,15 +6,15 @@ const mongoose = require('mongoose');
 
 const cors = require('cors')
 
-const corsOptions ={
-    origin:'http://localhost:3000', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,            //access-control-allow-credentials:true
+  optionSuccessStatus: 200
 }
 app.use(cors(corsOptions));
 
 //process.env.DATABASE_URL (local)
-mongoose.connect(process.env.APP_NAME)
+mongoose.connect('mongodb://' + process.env.APP_NAME)
 const db = mongoose.connection
 
 db.on('error', (error) => console.error(error))
