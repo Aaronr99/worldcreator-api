@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 
 const corsOptions ={
-    origin:'https://aaronr99.github.io/worldcreator-front/', 
+    origin:'https://aaronr99.github.io', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
