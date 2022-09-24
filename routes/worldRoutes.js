@@ -81,7 +81,7 @@ router.patch('/:id', upload.single("image"), getElement, async (req, res) => {
     }
     if (req.file) {
         const imgUrl = res.element.imageUrl
-            .replace('{process.env.APP_NAME}', path.join(__dirname, '../images'))
+            .replace(`${process.env.APP_NAME}`, path.join(__dirname, '../images'))
         const imageName = imgUrl.split("/")
         if (imageName[imageName.length - 1] != 'questionMark.jpg') {
             fs.unlink(imgUrl, (err) => {
@@ -111,7 +111,7 @@ router.delete('/:id', getElement, async (req, res) => {
     }
 
     const imgUrl = res.element.imageUrl
-        .replace('{process.env.APP_NAME}', path.join(__dirname, '../images'))
+        .replace(`${process.env.APP_NAME}`, path.join(__dirname, '../images'))
     const imageName = imgUrl.split("/")
     if (imageName[imageName.length - 1] != 'questionMark.jpg') {
         fs.unlink(imgUrl, (err) => {

@@ -13,7 +13,6 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-//process.env.DATABASE_URL (local)
 mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection
 
